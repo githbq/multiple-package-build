@@ -1,28 +1,32 @@
-# module-cli-lib
+# multiple-package-build
 
 ## 功能介绍
 
-1. module-cli-lib
+1. 对多包工程进行编译，将file依赖工程复制到dist目录后转换为正常依赖
 
 ## 安装
 
 ``` 
-yarn add module-cli-lib 
+yarn add multiple-package-build 
 //or 
-npm install module-cli-lib 
+npm install multiple-package-build 
 ```
 
 ## 使用   
 
+```ts 
+import multiplePackageBuild from 'multiple-package-build'
+
+multiplePackageBuild({cwd?:'/xxxx'})
+
 ``` 
-```
 
 ## cli模式
 
 ```
 
-npm i -g module-cli-lib
+npm i -g multiple-package-build
 
-module-cli-lib start
+multiple-package-build start
 ```
  
