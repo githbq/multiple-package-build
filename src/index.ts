@@ -1,5 +1,5 @@
 import * as  path from 'path'
-import jsonBeautify from 'json-beautify'
+import * as jsonPretty from 'json-pretty'
 import * as  fs from 'fs-extra'
 import * as  globby from 'globby'
 import copy from 'globby-copy-promise'
@@ -64,7 +64,7 @@ const tasks = [
                         [packageJSON.dependencies || {}, packageJSON.devDependencies || {}],
                         outputPackagePath
                     )
-                    await fs.outputFile(path.join(outputPackagePath, 'package.json'), jsonBeautify(packageJSON, null, 2, 80))
+                    await fs.outputFile(path.join(outputPackagePath, 'package.json'), jsonPretty(packageJSON, null, 2, 80))
                 })
                 await Promise.all(promises)
             }

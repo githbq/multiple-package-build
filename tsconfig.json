@@ -30,11 +30,11 @@
         "outDir": "./build",
         "rootDir": "./src"
     },
+    "include": [
+        "./src/**/*"
+    ],
     "exclude": [
-        "node_modules",
-        "build",
-        "**/*.test.ts",
-        "temp"
+        "**/node_modules/**/*"
     ],
     "compileOnSave": false,
     "buildOnSave": false

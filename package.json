@@ -1,6 +1,6 @@
 {
     "name": "multiple-package-build",
-    "version": "1.0.3",
+    "version": "1.0.4",
     "description": "multiple-package-build",
     "main": "build/index.js",
     "bin": {
@@ -20,7 +20,7 @@
     "dependencies": {
         "globby": "^11.0.1",
         "globby-copy-promise": "^1.0.4",
-        "json-beautify": "^1.1.1",
+        "json-pretty": "^0.0.1",
         "tslib": "^1.13.0",
         "yargs": "^15.4.1"
     },
