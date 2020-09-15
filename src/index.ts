@@ -14,7 +14,7 @@ const packageDependenciesTransform = async (dependencies, packagePath) => {
     const promises = ([].concat(dependencies)).map(async dependency => {
         const promises = Object.keys(dependency).map(async (name) => {
             if (!dependency[name].startsWith('file:')) return
-            let refPackageJSONPath = path.join(packagePath, dependency[name].substring(5), 'package.json')
+            let refPackageJSONPath = path.join(packagePath, dependency[name].replace('file:', ''), 'package.json')
             const refPackageJSON = await fs.readJSON(refPackageJSONPath)
             dependency[name] = `^${refPackageJSON.version}`
         })
@@ -55,7 +55,7 @@ const tasks = [
         action:
             async () => {
                 const outputPackagePaths = packages.map(n => replacePathSplit(path.join(outputPath, n)))
-                const promises = outputPackagePaths.map(async outputPackagePath => {
+                for (let outputPackagePath of outputPackagePaths) {
                     const packageJSON = await fs.readJSON(path.join(outputPackagePath, 'package.json'))
                     if (packageJSON.private) {
                         delete packageJSON.private
@@ -65,8 +65,7 @@ const tasks = [
                         outputPackagePath
                     )
                     await fs.outputFile(path.join(outputPackagePath, 'package.json'), jsonPretty(packageJSON, null, 2, 80))
-                })
-                await Promise.all(promises)
+                }
             }
     }
 ]
