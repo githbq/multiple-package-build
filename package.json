@@ -1,11 +1,11 @@
 {
     "name": "multiple-package-build",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "description": "multiple-package-build",
     "main": "build/index.js",
     "bin": {
-        "multiple-package-build": "./build/bin",
-        "mpb": "./build/bin"
+        "multiple-package-build": "./build/bin/index.js",
+        "mpb": "./build/bin/index.js"
     },
     "scripts": {
         "start:build": "npm run tsc && node build",
