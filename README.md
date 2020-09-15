@@ -27,6 +27,6 @@ multiplePackageBuild({cwd?:'/xxxx'})
 
 npm i -g multiple-package-build
 
-multiple-package-build start
+multiple-package-build
 ```
  
