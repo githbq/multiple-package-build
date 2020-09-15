@@ -4,7 +4,8 @@
     "description": "multiple-package-build",
     "main": "build/index.js",
     "bin": {
-        "multiple-package-build": "./build/bin"
+        "multiple-package-build": "./build/bin",
+        "mpb": "./build/bin"
     },
     "scripts": {
         "start:build": "npm run tsc && node build",
