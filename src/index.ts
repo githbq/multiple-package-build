@@ -11,9 +11,11 @@ const outputPath = replacePathSplit(path.resolve(cwd, 'dist'))
 let packages = []
 
 const packageDependenciesTransform = async (dependencies, packagePath) => {
+    let hasChange = false
     const promises = ([].concat(dependencies)).map(async dependency => {
         const promises = Object.keys(dependency).map(async (name) => {
             if (!dependency[name].startsWith('file:')) return
+            hasChange = true
             let refPackageJSONPath = path.join(packagePath, dependency[name].replace('file:', ''), 'package.json')
             const refPackageJSON = await fs.readJSON(refPackageJSONPath)
             dependency[name] = `^${refPackageJSON.version}`
@@ -21,6 +23,7 @@ const packageDependenciesTransform = async (dependencies, packagePath) => {
         await Promise.all(promises)
     })
     await Promise.all(promises)
+    return hasChange
 }
 
 const tasks = [
@@ -60,11 +63,11 @@ const tasks = [
                     if (packageJSON.private) {
                         delete packageJSON.private
                     }
-                    await packageDependenciesTransform(
+                    const hasChange = await packageDependenciesTransform(
                         [packageJSON.dependencies || {}, packageJSON.devDependencies || {}],
                         outputPackagePath
                     )
-                    await fs.outputFile(path.join(outputPackagePath, 'package.json'), jsonPretty(packageJSON, null, 2, 80))
+                    hasChange && await fs.outputFile(path.join(outputPackagePath, 'package.json'), jsonPretty(packageJSON, null, 2, 80))
                 }
             }
     }
