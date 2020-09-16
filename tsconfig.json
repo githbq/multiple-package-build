@@ -25,7 +25,8 @@
             "archiver",
             "fs-extra",
             "node",
-            "yargs"
+            "yargs",
+            "jest",
         ],
         "outDir": "./build",
         "rootDir": "./src"
