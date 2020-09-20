@@ -1,6 +1,6 @@
 {
     "name": "multiple-package-build",
-    "version": "1.0.6",
+    "version": "1.0.7",
     "description": "multiple-package-build",
     "main": "build/index.js",
     "bin": {
@@ -37,13 +37,9 @@
         "tslint": "^6.1.2",
         "typescript": "^3.9.7"
     },
-    "keywords": [
-        "multiple-package-build"
-    ],
+    "keywords": ["multiple-package-build"],
     "author": "hubiqing",
     "repository": "https://github.com/githbq/multiple-package-build.git",
-    "engines": {
-        "node": ">=8"
-    },
+    "engines": {"node": ">=8"},
     "license": "MIT"
 }

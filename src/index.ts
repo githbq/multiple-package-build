@@ -79,7 +79,8 @@ const run = async (options?) => {
     for (let task of tasks) {
         console.time(task.describe)
         try {
-            await task.action()
+            const result: any = await task.action()
+            if (result === false) break
         } catch (e) {
             console.error(task.describe, e)
         }
